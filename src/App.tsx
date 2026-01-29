@@ -616,7 +616,7 @@ const App = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 The Clarity Collection. All rights reserved.</p>
+            <p>&copy; 2025 The Clarity Collection™ by Clear Vision Leadership, LLC. All designs, trademarks, and original concepts are protected. All rights reserved.</p>
           </div>
         </div>
       </footer>
