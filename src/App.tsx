@@ -3,6 +3,13 @@ import { Heart, Star, ShoppingBag, ExternalLink, Menu, X, ChevronDown, Shield, R
 
 const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [sweatshirtColor, setSweatshirtColor] = React.useState(0);
+  const sweatshirtColors = [
+    { name: 'Washed Black', hex: '#292929' },
+    { name: 'Cream', hex: '#e8ddc8' },
+    { name: 'Forest Green', hex: '#203d31' },
+    { name: 'Burgundy', hex: '#6b2634' },
+  ];
   const [favorites, setFavorites] = React.useState<Set<number>>(new Set());
 
   const toggleFavorite = (productId: number) => {
@@ -419,6 +426,33 @@ const App = () => {
             >
               Our Story
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="oversized-clarity" aria-labelledby="oversized-title" className="px-4 sm:px-6 lg:px-8 pb-20 scroll-mt-40">
+        <div className="max-w-7xl mx-auto bg-white rounded-3xl overflow-hidden border border-red-100 shadow-lg">
+          <div className="grid lg:grid-cols-5">
+            <div className="lg:col-span-3 bg-stone-200 flex flex-col justify-center">
+              <div role="img" aria-label={`Front and back design concept in ${sweatshirtColors[sweatshirtColor].name}: small Clarity Collection print on the left chest and large CLARITY lettering across the back and sleeves.`}
+                className="w-full" style={{ aspectRatio: '8 / 3', backgroundImage: 'url(/clarity-oversized-color-concepts.webp)', backgroundSize: '100% 400%', backgroundPosition: `center ${sweatshirtColor * 100 / 3}%`, backgroundRepeat: 'no-repeat' }} />
+              <div className="flex justify-around text-xs uppercase tracking-widest text-stone-600 py-4"><span>Front · left chest</span><span>Back · sleeve to sleeve</span></div>
+            </div>
+            <div className="lg:col-span-2 p-7 sm:p-10">
+              <span className="inline-block rounded-full bg-red-50 text-red-700 px-4 py-2 text-xs font-bold uppercase tracking-widest">Coming soon</span>
+              <h2 id="oversized-title" className="text-3xl sm:text-4xl font-black text-gray-900 mt-5 mb-4">Clarity.<br />Make room for vision.</h2>
+              <p className="font-semibold text-gray-900 mb-3">The Oversized Clarity Sweatshirt</p>
+              <p className="text-gray-600 leading-relaxed">A bold reminder to live with vision. Small Clarity Collection lettering at the left chest, with statement CLARITY lettering stretching across the back and both sleeves.</p>
+              <p className="text-sm font-semibold text-gray-800 mt-6 mb-3" aria-live="polite">Color concept: {sweatshirtColors[sweatshirtColor].name}</p>
+              <div className="flex gap-3" role="group" aria-label="Preview sweatshirt color concepts">
+                {sweatshirtColors.map((color, index) => (
+                  <button key={color.name} type="button" title={color.name} aria-label={`Preview ${color.name}`} aria-pressed={sweatshirtColor === index} onClick={() => setSweatshirtColor(index)}
+                    className={`w-11 h-11 rounded-full border-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-600 ${sweatshirtColor === index ? 'ring-2 ring-red-600 ring-offset-4 border-white' : 'border-gray-300'}`} style={{ backgroundColor: color.hex }} />
+                ))}
+              </div>
+              <p className="text-xs text-gray-500 leading-relaxed mt-5">Design preview. Final colors, sizing, pricing, and availability will be announced at launch.</p>
+              <a href="#collections" className="inline-flex items-center gap-2 mt-6 text-red-700 font-semibold hover:underline">Shop the current collection <ShoppingBag className="w-4 h-4" /></a>
+            </div>
           </div>
         </div>
       </section>
