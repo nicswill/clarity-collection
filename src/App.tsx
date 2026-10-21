@@ -10,6 +10,7 @@ const App = () => {
     { name: 'Forest Green', hex: '#203d31' },
     { name: 'Burgundy', hex: '#6b2634' },
   ];
+  const previewCrop = [{ top: 0, height: 350 }, { top: 370, height: 350 }, { top: 750, height: 350 }, { top: 1120, height: 400 }][sweatshirtColor];
   const [favorites, setFavorites] = React.useState<Set<number>>(new Set());
 
   const toggleFavorite = (productId: number) => {
@@ -435,7 +436,7 @@ const App = () => {
           <div className="grid lg:grid-cols-5">
             <div className="lg:col-span-3 bg-stone-200 flex flex-col justify-center">
               <div role="img" aria-label={`Front and back design concept in ${sweatshirtColors[sweatshirtColor].name}: small Clarity Collection print on the left chest and large CLARITY lettering across the back and sleeves.`}
-                className="w-full" style={{ aspectRatio: '8 / 3', backgroundImage: 'url(/clarity-oversized-color-concepts.webp)', backgroundSize: '100% 400%', backgroundPosition: `center ${sweatshirtColor * 100 / 3}%`, backgroundRepeat: 'no-repeat' }} />
+                className="w-full" style={{ aspectRatio: `1024 / ${previewCrop.height}`, backgroundImage: 'url(/clarity-oversized-color-concepts.webp)', backgroundSize: `100% ${1536 / previewCrop.height * 100}%`, backgroundPosition: `center ${previewCrop.top / (1536 - previewCrop.height) * 100}%`, backgroundRepeat: 'no-repeat' }} />
               <div className="flex justify-around text-xs uppercase tracking-widest text-stone-600 py-4"><span>Front · left chest</span><span>Back · sleeve to sleeve</span></div>
             </div>
             <div className="lg:col-span-2 p-7 sm:p-10">
